@@ -1,10 +1,7 @@
-import os
-import sys
 
-import pandas as pd
-from tia.bbg import LocalTerminal
 import numpy as np
 from datetime import datetime
+from tia.bbg import LocalTerminal
 import QuantLib as ql
 
 '''
