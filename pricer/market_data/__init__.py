@@ -17,4 +17,4 @@ import QuantLib as ql
 
 __version__ = "0.1.0"
 
-print ("Welcome to the High Yield Pricer")
+print ("Market Data Loading....")
