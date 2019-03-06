@@ -1,8 +1,10 @@
+#!/usr/bin/env python
 
 import QuantLib as ql
 
 import market_data.yield_curve as yc
 import market_data.bond_terms as bt
+import market_data.credit_curve as cc
 
 '''
 Set settlement and day count:
