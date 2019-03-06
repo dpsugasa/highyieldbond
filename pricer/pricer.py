@@ -4,7 +4,18 @@ import QuantLib as ql
 
 import market_data.yield_curve as yc
 import market_data.bond_terms as bt
-import market_data.credit_curve as cc
+import credit_data.credit_curve as cc
+
+'''
+pricing functions
+'''
+
+def value_bond(a, s, grid_points, bond, ts_handle):
+    model = ql.HullWhite(ts_handle, a, s)
+    engine = ql.TreeCallableFixedRateBondEngine(model, grid_points)
+    bond.setPricingEngine(engine)
+    return bond
+
 
 '''
 Set settlement and day count:
@@ -27,11 +38,15 @@ bond = ql.CallableFixedRateBond(
     ql.Following, face_amount, bt.issueDate,
     bt.callability_schedule)
 
-def value_bond(a, s, grid_points, bond):
-    model = ql.HullWhite(yc.spotCurveHandle, a, s)
-    engine = ql.TreeCallableFixedRateBondEngine(model, grid_points)
-    bond.setPricingEngine(engine)
-    return bond
+#def value_bond(a, s, grid_points, bond):
+#    model = ql.HullWhite(yc.spotCurveHandle, a, s)
+#    engine = ql.TreeCallableFixedRateBondEngine(model, grid_points)
+#    bond.setPricingEngine(engine)
+#    return bond
 
-value_bond(0.01, 0.08, 40, bond)
+value_bond(0.01, 0.08, 1000, bond, yc.spotCurveHandle)
 print ("Calls/no credit Bond price: ",bond.NPV())
+value_bond(0.01, 0.08, 1000, bond, cc.spotCurve_credit_handle)
+print ("Calls/no credit Bond price: ",bond.NPV())
+
+#print ("Calls/no credit Bond price: ",bond.NPV())

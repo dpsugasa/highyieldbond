@@ -5,7 +5,7 @@ from datetime import datetime
 from tia.bbg import LocalTerminal
 import QuantLib as ql
 
-import yield_curve as yc
+import market_data.yield_curve as yc
 
 
 '''
