@@ -24,7 +24,8 @@ Set settlement and day count:
 settlement_days = 2
 face_amount = bt.par
 accrual_daycount = ql.Actual360()#ql.ActualActual(ql.ActualActual.Bond)
-
+compoundingFrequency = yc.compoundingFrequency
+compounding = yc.compounding
 '''
 Fixed Rate Bond - no credit curve
 '''
