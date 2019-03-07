@@ -25,12 +25,19 @@ settlement_days = 2
 face_amount = bt.par
 accrual_daycount = ql.Actual360()#ql.ActualActual(ql.ActualActual.Bond)
 
+'''
+Fixed Rate Bond - no credit curve
+'''
+
 fixedRateBond = ql.FixedRateBond(settlement_days, face_amount, bt.schedule, bt.coupons, accrual_daycount)
-#
+
 bondEngine = ql.DiscountingBondEngine(yc.spotCurveHandle)
 fixedRateBond.setPricingEngine(bondEngine)
-print ("No calls/no credit Bond price: ", fixedRateBond.NPV())
+print ("Fixed Rate Bond/no credit Bond price: ", fixedRateBond.NPV())
 
+'''
+Callable Bond - no credit curve
+'''
 
 bond = ql.CallableFixedRateBond(
     settlement_days, face_amount,
@@ -38,15 +45,14 @@ bond = ql.CallableFixedRateBond(
     ql.Following, face_amount, bt.issueDate,
     bt.callability_schedule)
 
-#def value_bond(a, s, grid_points, bond):
-#    model = ql.HullWhite(yc.spotCurveHandle, a, s)
-#    engine = ql.TreeCallableFixedRateBondEngine(model, grid_points)
-#    bond.setPricingEngine(engine)
-#    return bond
 
-value_bond(0.01, 0.08, 1000, bond, yc.spotCurveHandle)
-print ("Calls/no credit Bond price: ",bond.NPV())
-value_bond(0.01, 0.08, 1000, bond, cc.spotCurve_credit_handle)
-print ("Calls/no credit Bond price: ",bond.NPV())
+call_bond = value_bond(0.01, 0.08, 1000, bond, yc.spotCurveHandle)
+print ("Callable Bond/no credit Bond price: ", call_bond.NPV())
 
-#print ("Calls/no credit Bond price: ",bond.NPV())
+'''
+Callable Bond - credit curve
+'''
+
+risky_call_bond = value_bond(0.01, 0.08, 1000, bond, cc.spotCurve_credit_handle)
+print ("Risky Callable Bond price: ", risky_call_bond.NPV())
+

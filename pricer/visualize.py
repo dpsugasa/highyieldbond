@@ -14,7 +14,7 @@ import pricer as pc
 #build data matrix
 data_matrix = [['Altice 7.25% 5/15/2022, ''],
                ['Fixed Rate Bond - no calls/no credit', pc.pricer.fixedRateBond.cleanPrice()],
-               ['Callable Bond - no credit', fin_mando_px],
+               ['Callable Bond - no credit', ],
                ['Delta', np.round((put_d + call_d),3)],
                ['Parity', np.round(current_parity(),3)],
                ['Points Above Parity', parity_points],
