@@ -44,7 +44,7 @@ trace_price = go.Scatter(
                 name = 'Price Performance',
                 )
 
-layout = go.Layout(title = 'High Yield Price Performnce',
+layout = go.Layout(title = 'High Yield Price Performance',
                    xaxis=dict(title = 'Date',
                               fixedrange = True),
                    yaxis=dict(title = 'Price',
