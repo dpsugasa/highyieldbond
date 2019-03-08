@@ -10,8 +10,11 @@ PlotLy for visualization (in progress)
 File and Directory Description:
 
 Market Data - directory that holds the yield curve and bond terms files
+
 Credit Data - directory that holds the credit curve files
+
 pricer.py - file that generates bond prices (fixed, callable, risky callable)
+
 visualize.py - file that publishes bond analytics and graphs to PlotLy (in progress)
 
 
