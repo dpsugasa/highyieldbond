@@ -57,6 +57,6 @@ Callable Bond - credit curve
 risky_call_bond = value_bond(0.01, 0.08, 1000, bond, cc.spotCurve_credit_handle)
 print ("Risky Callable Bond price: ", risky_call_bond.NPV())
 
-#for c in risky_call_bond.cashflows():
-#    print (c.date(), c.amount())
+for c in risky_call_bond.cashflows():
+    print (c.date(), c.amount())
 
